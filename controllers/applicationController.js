@@ -3,9 +3,10 @@ const express = require('express');
 //Ask express to provide us with a new
 //instance of it's router module.
 const router = express.Router();
+const isAuthenticated = require("../middlewares/isAuthenticated");
 
 //A simple GET route
-router.get('/', function(req, res) {
+router.get('/', isAuthenticated, function(req, res) {
   //Using the handlebars view engine
   //we tell it to render the
   //welcome.hbs view, and give it
@@ -14,7 +15,7 @@ router.get('/', function(req, res) {
   //'Your nice name' so that the view can
   //use it.
   res.render('welcome.hbs', {
-    username: 'Your nice name'
+    username: req.user.firstName
   });
 });
 

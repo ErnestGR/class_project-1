@@ -1,5 +1,6 @@
 //Bring in our controller file into this one.
 const applicationController = require('../controllers/applicationController');
+const autheticationContoller = require('../controllers/authenticationController');
 
 //Let our file know that it should output a
 //function that expects our server as a parameter
@@ -9,4 +10,5 @@ module.exports = function(app) {
   //and puts them inside of our server, we
   //can do this as many times as we want.
   app.use(applicationController);
+  app.use(autheticationContoller);
 }
